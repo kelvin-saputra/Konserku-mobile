@@ -168,3 +168,150 @@ Widget build(BuildContext context) {
   }
 ```
 Tambahkan code tersebut di dalam class `InventoryCard` sehingga dapat memunculkan Snackbar pada saat kita melakukan aksi klik pada tombol menu yang disediakan
+
+## To Do List TUGAS 8
+- [x] Membuat minimal satu halaman baru pada aplikasi, yaitu halaman formulir tambah item baru dengan ketentuan sebagai berikut:
+
+- [x] Memakai minimal tiga elemen input, yaitu `name`, `amount`, `description`. Tambahkan elemen input sesuai dengan model pada aplikasi tugas Django yang telah kamu buat.
+- [x] Memiliki sebuah tombol `Save`.
+- [x] Setiap elemen input di formulir juga harus divalidasi dengan ketentuan sebagai berikut:
+      * Setiap elemen input tidak boleh kosong.
+      * Setiap elemen input harus berisi data dengan tipe data atribut modelnya.
+
+- [x] Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol `Tambah Item` pada halaman utama.
+- [x] Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah `pop-up` setelah menekan tombol `Save` pada halaman formulir tambah item baru.
+- [x] Membuat sebuah drawer pada aplikasi dengan ketentuan sebagai berikut:
+    * Drawer minimal memiliki dua buah opsi, yaitu `Halaman Utama` dan `Tambah Item`.
+    * Ketika memiih opsi Halaman Utama, maka aplikasi akan mengarahkan pengguna ke halaman utama.
+    * Ketika memiih opsi (`Tambah Item`), maka aplikasi akan mengarahkan pengguna ke halaman form tambah item baru.
+
+- [x] Menjawab beberapa pertanyaan berikut pada `README.md` pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
+    * Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()`, disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+    * Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+    * Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+    * Bagaimana penerapan clean architecture pada aplikasi Flutter?
+    * Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+- [x] Melakukan add-commit-push ke GitHub.
+
+### Perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()`, disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+Kedua metode ini memiliki perbedaan utama dalam cara mereka menangani tumpukan halaman (stack) dalam aplikasi.
+- **Fungsi**
+  * Pada `Navigator.push()`, Metode ini menambahkan halaman baru ke atas tumpukan navigasi. Halaman sebelumnya tetap ada di tumpukan dan pengguna dapat kembali ke halaman tersebut dengan menggunakan tombol back.
+  * Pada `Navigator.pushReplacement()`, Metode ini menggantikan halaman saat ini di tumpukan navigasi dengan halaman baru. Halaman sebelumnya dihapus dari tumpukan sehingga pengguna tidak dapat kembali ke halaman itu lagi.
+
+- **Penggunaan**
+  * Pada `Navigator.push()`, Metode ini biasanya digunakan ketika kita ingin memungkinkan pengguna untuk kembali ke halaman sebelumnya, seperti dalam kasus navigasi dari daftar item ke detail item.
+  * Pada `Navigator.pushReplacement()`, metode ini sering digunakan dalam kasus seperti login/logout flow, di mana setelah pengguna berhasil login atau logout, kita tidak ingin mereka dapat kembali ke halaman login atau dashboard hanya dengan menekan tombol back.
+
+### Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+Berikut adalah penjelasan tentang beberapa layout widget utama di Flutter:
+- **Container**
+Container adalah widget yang digunakan untuk mendekorasi, memberi dimensi, dan memposisikan child widget.biasanya digunakan pada saat kita ingin memberikan padding, margin, latar belakang, atau transformasi pada widget tunggal.
+
+- **Row dan Column**
+Row digunakan untuk layout horizontal dan Column untuk layout vertikal.
+Penggunaan Row dan Column untuk membuat layout linier. biasanya digunakan untuk menata widget secara horizontal (Row) atau vertikal (Column).
+
+- **Stack**
+Stack memungkinkan kita untuk menumpuk widget di atas satu sama lain. Penggunaan Stack digunakan untuk tumpukan widget, seperti menempatkan teks di atas gambar.
+
+- **Wrap**
+Wrap menata anak-anaknya secara horizontal atau vertikal dan secara otomatis akan pindah ke baris atau kolom berikutnya jika tidak ada ruang cukup.
+Penggunaann Wrap adalah saat kita memiliki kumpulan widget yang mungkin tidak muat dalam satu baris atau kolom dan membutuhkan pembungkusan ke baris atau kolom berikutnya.
+
+- **GridView**
+GridView digunakan untuk membuat tata letak grid yang dapat di-scroll. Biasanya digunakan untuk menampilkan data dalam bentuk grid, seperti galeri gambar.
+
+- **ListView**
+
+ListView adalah widget scrollable yang menata anak-anaknya secara linear.
+Penggunaan ListView digunakan untuk daftar item yang dapat discroll, seperti daftar email atau berita.
+
+- **Expanded dan Flexible**
+Expanded dan Flexible memungkinkan anak-anaknya mengisi ruang yang tersedia dalam Row, Column, atau Flex.
+Penggunaan Expanded digunakan untuk untuk memaksa anak-anaknya mengisi ruang yang tersedia, dan Flexible untuk pembagian ruang dengan faktor fleksibilitas.
+
+- **Padding**
+Padding digunakan untuk memberikan padding di sekitar widget anak.
+Penggunaan Padding digunakan untuk menambahkan ruang di sekeliling widget.
+
+- **Align dan Center**
+Align dan Center digunakan untuk mengatur posisi anak-anaknya dalam dirinya.
+Penggunaan Center digunakan untuk memusatkan anak-anaknya, sementara Align memungkinkan penyesuaian posisi lebih spesifik.
+
+- **Scaffold**
+Scaffold menyediakan struktur dasar untuk layar di aplikasi material.
+Penggunaan Scaffold digunakan untuk membuat struktur dasar aplikasi, termasuk AppBar, Drawer, BottomNavigationBar, dan FloatingActionButton.
+
+### Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+Pada tugas kali ini saya hanya menggunakan 2 elemen input, yaitu TextFormField dan ElevatedButton. Berikut penjelasan terkait alasan penggunaan kedua elemen input tersebut.
+- **`TextFormField`**
+  * TextFormField sangat fleksibel dan dapat digunakan untuk berbagai jenis input teks, baik itu nama, jumlah, atau deskripsi.
+  * Sangat memungkinkan kita untuk dengan mudah menambahkan validasi input. Misalnya, memastikan bahwa field 'name' tidak kosong, 'amount' adalah angka, dan seterusnya.
+  * TextFormField bekerja dengan baik dalam widget Form, memungkinkan pengelolaan state dan validasi form secara keseluruhan.
+  * Dengan menggunakan TextFormField, kita dapat menjaga konsistensi tampilan dan perilaku field input teks di seluruh aplikasi.
+
+- **`ElevatedButton`**
+  * ElevatedButton menyediakan tombol yang mudah digunakan dan diakses oleh pengguna, dengan feedback visual yang jelas saat ditekan.
+  * Sesuai dengan desain material, ElevatedButton memberikan dimensi dan bayangan, membuatnya menonjol di antara elemen lain.
+  * Tombol ini sering digunakan untuk memicu aksi seperti mengirimkan data form, menyediakan cara yang jelas dan intuitif bagi pengguna untuk menyelesaikan tindakan dalam form.
+### Bagaimana penerapan clean architecture pada aplikasi Flutter?
+- Pembagian Layer
+  * Presentation Layer: Ini adalah lapisan yang berisi UI (User Interface) dan logika tampilan. Di Flutter, ini termasuk widget dan screen. ViewModel juga bagian dari lapisan ini, yang berfungsi sebagai perantara antara lapisan bisnis dan UI.
+  * Business Logic Layer (BLL): Lapisan ini, sering kali disebut juga sebagai domain layer, mengandung aturan bisnis dan kasus penggunaan aplikasi. Ini adalah tempat di mana logika aplikasi diimplementasikan, terpisah dari UI.
+  * Data Layer: Lapisan ini bertanggung jawab atas pengelolaan data, baik itu berasal dari database lokal, API jaringan, atau sumber lain. Ini termasuk repository, model data, dan data source.
+
+- Penerapan Prinsip-Prinsip:
+  * Prinsip Single Responsibility: Setiap kelas harus memiliki satu tanggung jawab saja.
+  * Dependency Inversion: Modul tingkat tinggi tidak harus bergantung pada modul tingkat rendah. Kedua harus bergantung pada abstraksi.
+  * Abstraksi dan Encapsulation: Memisahkan implementasi dengan interface.
+
+- Dependency Injection (DI):
+  * Gunakan DI untuk mengurangi ketergantungan langsung antara berbagai komponen. Hal ini juga mempermudah pengujian karena memungkinkan penggantian implementasi dengan mock saat diuji.
+
+- Repository Pattern:
+  * Gunakan repository pattern dalam lapisan data untuk mengabstraksi akses data dari BLL.
+  * Repository berinteraksi dengan berbagai sumber data dan menyediakan antarmuka yang bersih ke BLL.
+
+- State Management:
+  * Pilih solusi state management (seperti Provider, Bloc, Redux, dll.) yang mendukung arsitektur bersih.
+  * Pastikan bahwa logika state management terpisah dari UI.
+
+- Testing:
+  * Unit test untuk setiap lapisan. Pastikan setiap lapisan dapat diuji secara independen.
+  * Gunakan mock dan dependency injection untuk mengisolasi unit tes.
+
+- Modularitas:
+  * Pisahkan fitur besar menjadi modul atau package yang lebih kecil.
+  * Ini membantu dalam mengelola dependensi dan meningkatkan kejelasan kode.
+  * Continuous Integration/Continuous Deployment (CI/CD):
+
+Terapkan CI/CD untuk memastikan bahwa setiap perubahan kode melewati tahapan build dan test secara otomatis.
+### Jelaskan step by step penyelesaian tugas
+
+#### Halaman Formulir Tambah Item Baru
+1. Pertama-tama saya membuat sebuah berkas baru pada direktori lib dengan nama file `form_konserku.dart` yang dimana akan digunakan untuk meminta input dari user.
+2. Selanjutnya saya menggunakan _formkey untuk mengelola state form dan validasi input yang dibutuhkan.
+3. Selanjutnya kita perlu tambahkan widget widget yang dibutuhkan dalam form. sebagai salah contoh adalah kita akan masukkan field form yang digunakan untuk meminta input dari user berupa text yang nantinya terdapat beberapa yang dikonversi menjadi angka. untuk tiap field juga saya lakukan validasi agar input yang dimasukkan merupakan input yang valid.
+4. Terakhir saya perlu menambahkan tombol `save` sebagai child widget di dalam column. Saya juga menambahkan `showDialog()` pada `onPressed()` untuk menampilkan pop-up konfirmasi.
+
+#### Menambahkan navigasi ke halaman form tambah item
+1. Pertama-tama bukalah berkas `menu.dart` lalu pindah InventoryItem ke dalam file `menu_card.dart`. 
+2. Selanjutnya  bukalah berkas yang berjudul `menu_card.dart` lalu cari atribut onTap dari widget InkWell. Tambahkan kode untuk menggunakan Navigator.push dalam onTap. Ini akan mengarahkan pengguna ke halaman form tambah item baru ketika tombol Tambah Item ditekan.
+
+#### Memuncul popup message setelah `Save` item yang ingin dimasukkan
+1. Pada halaman form tambah item, cari tombol `Save`.
+2. Setelah itu kita perlu mencari atribut onPressed dan mencari atribut dari tombol `Save`, tambahkan fungsi `showDialog()`. Dalam `showDialog()`, gunakan widget `AlertDialog` untuk menampilkan data yang diisi dalam form.
+3. Tambahkan juga fungsi untuk mereset form setelah data disimpan.
+
+#### Membuat LeftDrawer
+1. Pertama-tama Buat berkas baru dengan nama `left_drawer.dart` di dalam direktori widgets.
+2. Dalam left_drawer.dart, tulis kode untuk membuat komponen LeftDrawer.
+3. Import halaman yang diperlukan untuk menambahkan ke dalam menu Drawer. Ini termasuk halaman utama dan halaman tambah item baru. Atur navigasi untuk setiap opsi di Drawer menggunakan Navigator.pushReplacement().
+4. Tambahkan kode untuk membuat header drawer sesuai dengan desain yang diinginkan.
+
+#### Melakukan Refactoring
+1. Buat berkas baru dengan nama `menu_card.dart` di dalam direktori widgets. Pindahkan konten widget ShopItem dari menu.dart ke `menu_card.dart`.
+2. Import `form_konserku.dart` ke dalam `menu_card.dart` untuk memastikan ketersediaan dependensi yang dibutuhkan.
+3. Import `menu_card.dart` ke dalam menu.dart agar widget ShopItem tetap dapat digunakan. Pindahkan `menu.dart` dan `form_konserku.dart` ke dalam folder baru screens untuk organisasi yang lebih baik.
