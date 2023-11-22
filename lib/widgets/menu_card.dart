@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inventory_mobile/screens/form_konserku.dart';
+import 'package:inventory_mobile/screens/list_item.dart';
+import 'package:inventory_mobile/screens/login.dart';
 import 'package:inventory_mobile/screens/ticket_item.dart';
 
 class InventoryItem {
@@ -20,7 +22,6 @@ class InventoryCard extends StatelessWidget {
     return Material(
       color: item.color,
       child: InkWell(
-
         onTap: () {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
@@ -28,11 +29,16 @@ class InventoryCard extends StatelessWidget {
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
 
           if (item.name == "Tambah Item") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const TicketFormPage()));
+          } else if (item.name == "Lihat Item") {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const TicketFormPage()));
-          } else if (item.name == "Lihat Item"){
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const TicketItemsLists()));
+                MaterialPageRoute(builder: (context) => const ItemPage()));
+          } else if (item.name == "Logout") {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const LoginPage()));
           }
         },
         child: Container(
