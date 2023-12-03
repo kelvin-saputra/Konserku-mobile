@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
 
                                 
                                 // gunakan URL http://10.0.2.2/
-                                final response = await request.login("http://kelvin-saputra-tugas.pbp.cs.ui.ac.id/auth/login/", {
+                                final response = await request.login("http://localhost:8000/auth/login/", {
                                 'username': username,
                                 'password': password,
                                 });

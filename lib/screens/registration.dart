@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('https://kelvin-saputra-tugas.pbp.cs.ui.ac.id/auth/register_flutter/'),
+        Uri.parse('http://localhost:8000/auth/register_flutter/'),
         body: {
           'username': username,
           'password': password,

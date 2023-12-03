@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:inventory_mobile/models/item.dart';
 import 'package:inventory_mobile/screens/item_detail.dart';
 import 'package:inventory_mobile/widgets/left_drawer.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class ItemPage extends StatefulWidget {
   const ItemPage({Key? key}) : super(key: key);
@@ -14,15 +16,20 @@ class ItemPage extends StatefulWidget {
 
 class _ItemPageState extends State<ItemPage> {
   Future<List<Item>> fetchProduct() async {
-    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-    var url = Uri.parse('http://kelvin-saputra-tugas.pbp.cs.ui.ac.id/json/');
-    var response = await http.get(
-      url,
-      headers: {"Content-Type": "application/json"},
-    );
+    final request = context.watch<CookieRequest>();
 
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
+    var response = await request.get('http://localhost:8000/get_user_item/');
+
+    var data = response;
+    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+    // var url = Uri.parse('http://localhost:8000/json/');
+    // var response = await http.get(
+    //   url,
+    //   headers: {"Content-Type": "application/json"},
+    // );
+
+    // // melakukan decode response menjadi bentuk json
+    // var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object Product
     List<Item> list_product = [];
